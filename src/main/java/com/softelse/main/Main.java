@@ -12,19 +12,14 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int g = sc.nextInt();
 
-        while(!(g==0)){
+        while(!(g==0)) {
 
             try {
                 leitor.cadastrarPessoa();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
         }
-
-
-
-
         leitor.listAllPessoas();
     }
 }
