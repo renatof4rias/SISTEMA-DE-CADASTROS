@@ -15,7 +15,7 @@ public class PessoaService {
     int i = 0;
 
     public void cadastrarPessoa() throws IOException {
-        Pessoa pessoa = new Pessoa();
+        pessoa = new Pessoa();
         FileReader fileReader = new FileReader(perguntas);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
@@ -59,12 +59,11 @@ public class PessoaService {
         }
     }
 
+    int j = 0;
     public void listAllPessoas() {
+        j++;
         for (Pessoa Pessoa : listaPessoas) {
-            System.out.println(Pessoa.getNome());
-            System.out.println(Pessoa.getEmail());
-            System.out.println(Pessoa.getIdade());
-            System.out.println(Pessoa.getAltura());
+            System.out.println(j + " - " + Pessoa.getNome().toUpperCase());
         }
     }
 

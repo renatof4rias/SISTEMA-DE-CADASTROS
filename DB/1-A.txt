@@ -1,0 +1,8 @@
+Nome: a 
+E-mail: a 
+Idade: 1 
+Altura: 1.0 
+Nome: a 
+E-mail: a 
+Idade: 1 
+Altura: 1.0 
