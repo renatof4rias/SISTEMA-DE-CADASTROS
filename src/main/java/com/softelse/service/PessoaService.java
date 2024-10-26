@@ -9,12 +9,13 @@ import java.util.Scanner;
 public class PessoaService {
     File perguntas = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\src\\main\\java\\com\\softelse\\service\\perguntas.txt");
     Scanner respostaIn = new Scanner(System.in);
+    Pessoa pessoa;
     ArrayList<Pessoa> listaPessoas = new ArrayList<>();
-    Pessoa pessoa = new Pessoa();
 
     int i = 0;
 
     public void cadastrarPessoa() throws IOException {
+        Pessoa pessoa = new Pessoa();
         FileReader fileReader = new FileReader(perguntas);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
 
@@ -36,11 +37,10 @@ public class PessoaService {
             }
         }
         listaPessoas.add(pessoa);
-        gerandoArquivo();
+        gerandoArquivo(pessoa);
     }
 
-    private void gerandoArquivo() {
-        String getNome = pessoa.getNome();
+    private void gerandoArquivo(Pessoa pessoa) {
         i++;
         try {
             File resposta = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\DB\\" + String.valueOf(i) + "-" + pessoa.getNome().toUpperCase() + ".txt");
@@ -79,7 +79,5 @@ public class PessoaService {
     public void cadastrarPergunta(){
         System.out.println("cadastrarPergunta sem Implementação");
     }
-
-
 
 }
