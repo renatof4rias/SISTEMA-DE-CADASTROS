@@ -67,4 +67,19 @@ public class PessoaService {
             System.out.println(Pessoa.getAltura());
         }
     }
+
+    public void buscarPessoaId(){
+        System.out.println("buscarPessoaId sem Implementação");
+        //trocar nome do metodo
+    }
+
+    public void removerPergunta(){
+        System.out.println("removerPergunta sem Implementação");
+    }
+    public void cadastrarPergunta(){
+        System.out.println("cadastrarPergunta sem Implementação");
+    }
+
+
+
 }
