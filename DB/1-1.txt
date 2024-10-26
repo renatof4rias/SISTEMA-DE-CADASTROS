@@ -1,4 +1,0 @@
-Nome: 1 
-E-mail: 1 
-Idade: 1 
-Altura: 1.0 

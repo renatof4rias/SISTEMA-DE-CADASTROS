@@ -1,4 +1,0 @@
-Nome: xa 
-E-mail: ax 
-Idade: 12 
-Altura: 21.0 

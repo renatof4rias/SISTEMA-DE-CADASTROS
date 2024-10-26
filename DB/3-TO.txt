@@ -1,4 +1,0 @@
-Nome: to 
-E-mail: to 
-Idade: 56 
-Altura: 56.0 
