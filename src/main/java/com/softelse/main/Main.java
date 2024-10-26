@@ -23,7 +23,6 @@ public class Main {
         System.out.print(opcaoMenu);
         int opcaoEscolhida = sc.nextInt();
 
-
         while(opcaoEscolhida!=6) {
         if (opcaoEscolhida == 1){
             try {
