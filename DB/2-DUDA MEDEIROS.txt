@@ -1,0 +1,4 @@
+Nome: Duda Medeiros 
+E-mail: duda@medeiros 
+Idade: 19 
+Altura: 168.0 
