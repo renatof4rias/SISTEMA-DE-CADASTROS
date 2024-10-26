@@ -1,0 +1,4 @@
+Nome: eu 
+E-mail: eu 
+Idade: 1 
+Altura: 1.0 
