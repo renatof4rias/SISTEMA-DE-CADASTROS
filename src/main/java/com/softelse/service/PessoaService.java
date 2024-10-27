@@ -1,5 +1,6 @@
 package com.softelse.service;
 
+import com.softelse.model.PerguntaExtra;
 import com.softelse.model.Pessoa;
 
 import java.io.*;
@@ -9,10 +10,10 @@ import java.util.Scanner;
 public class PessoaService {
     File perguntas = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\src\\main\\java\\com\\softelse\\service\\perguntas.txt");
     Scanner respostaIn = new Scanner(System.in);
+
     Pessoa pessoa;
     ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 
-    int i = 0;
 
     public void cadastrarPessoa() throws IOException {
         pessoa = new Pessoa();
@@ -40,6 +41,8 @@ public class PessoaService {
         gerandoArquivo(pessoa);
     }
 
+    int i = 0;
+
     private void gerandoArquivo(Pessoa pessoa) {
         i++;
         try {
@@ -50,16 +53,24 @@ public class PessoaService {
             br.write("E-mail: " + pessoa.getEmail() + " \n");
             br.write("Idade: " + String.valueOf(pessoa.getIdade()) + " \n");
             br.write("Altura: " + String.valueOf(pessoa.getAltura()) + " \n");
+
+
+                System.out.println(cadastrarPergunta());
+
+
+
             br.flush();
             br.close();
             fw.close();
             resposta.createNewFile();
+
         } catch (IOException e) {
             e.getMessage();
         }
     }
 
     int j = 0;
+
     public void listAllPessoas() {
         j++;
         for (Pessoa Pessoa : listaPessoas) {
@@ -67,16 +78,43 @@ public class PessoaService {
         }
     }
 
-    public void buscarPessoaId(){
+    public void buscarPessoaId() {
         System.out.println("buscarPessoaId sem Implementação");
         //trocar nome do metodo
     }
 
-    public void removerPergunta(){
+    public void removerPergunta() {
         System.out.println("removerPergunta sem Implementação");
     }
-    public void cadastrarPergunta(){
-        System.out.println("cadastrarPergunta sem Implementação");
-    }
 
+
+    ArrayList<String> perguntaExtra;
+    int k = 4;
+
+    public ArrayList<String> cadastrarPergunta() {
+        perguntaExtra = new ArrayList();
+
+        while (true) {
+            System.out.println("0 = Break, 1 = Continue");
+            System.out.print("Deseja Adicionar Perguntas Extras S/N ? ");
+//            String inPerguntas = respostaIn.nextLine();
+            int inPerguntas = respostaIn.nextInt();
+            respostaIn.nextLine();
+            if (inPerguntas == 0) {
+                break;
+            } else if (inPerguntas == 1) {
+                k++;
+                System.out.println("Digite sua Pergunta!");
+                String perguntaExtraIn = respostaIn.nextLine();
+                perguntaExtra.add(k + " - " + perguntaExtraIn);
+
+                System.out.print("Deseja Adicionar Outra ? ");
+                inPerguntas = respostaIn.nextInt();
+                if (inPerguntas == 0) {
+                    break;
+                }
+            }
+        }
+        return perguntaExtra;
+    }
 }
