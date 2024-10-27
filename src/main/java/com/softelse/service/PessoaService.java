@@ -54,7 +54,6 @@ public class PessoaService {
             br.write("Idade: " + String.valueOf(pessoa.getIdade()) + " \n");
             br.write("Altura: " + String.valueOf(pessoa.getAltura()) + " \n");
 
-
                 System.out.println(cadastrarPergunta());
 
 
@@ -95,26 +94,25 @@ public class PessoaService {
         perguntaExtra = new ArrayList();
 
         while (true) {
-            System.out.println("0 = Break, 1 = Continue");
             System.out.print("Deseja Adicionar Perguntas Extras S/N ? ");
-//            String inPerguntas = respostaIn.nextLine();
-            int inPerguntas = respostaIn.nextInt();
-            respostaIn.nextLine();
-            if (inPerguntas == 0) {
+            String inPerguntas = respostaIn.nextLine();
+            if (inPerguntas.equalsIgnoreCase("n")) {
                 break;
-            } else if (inPerguntas == 1) {
+            } else if (inPerguntas.equalsIgnoreCase("s")) {
                 k++;
                 System.out.println("Digite sua Pergunta!");
                 String perguntaExtraIn = respostaIn.nextLine();
                 perguntaExtra.add(k + " - " + perguntaExtraIn);
 
                 System.out.print("Deseja Adicionar Outra ? ");
-                inPerguntas = respostaIn.nextInt();
-                if (inPerguntas == 0) {
+                inPerguntas = respostaIn.nextLine();
+                if (inPerguntas.equalsIgnoreCase("n")) {
                     break;
                 }
             }
         }
         return perguntaExtra;
     }
+
+
 }
