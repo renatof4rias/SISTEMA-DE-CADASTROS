@@ -1,6 +1,5 @@
 package com.softelse.service;
 
-import com.softelse.model.PerguntaExtra;
 import com.softelse.model.Pessoa;
 
 import java.io.*;
@@ -54,8 +53,7 @@ public class PessoaService {
             br.write("Idade: " + String.valueOf(pessoa.getIdade()) + " \n");
             br.write("Altura: " + String.valueOf(pessoa.getAltura()) + " \n");
 
-                System.out.println(cadastrarPergunta());
-
+            System.out.println(cadastrarPergunta());
 
 
             br.flush();
