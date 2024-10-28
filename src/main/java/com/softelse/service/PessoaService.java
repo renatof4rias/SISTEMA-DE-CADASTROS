@@ -13,7 +13,6 @@ public class PessoaService {
     Pessoa pessoa;
     ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 
-
     public void cadastrarPessoa() throws IOException {
         pessoa = new Pessoa();
         FileReader fileReader = new FileReader(perguntas);
@@ -21,7 +20,6 @@ public class PessoaService {
 
         int numeroDaLinha = 0;
         String linha;
-
         while ((linha = bufferedReader.readLine()) != null) {
             numeroDaLinha++;
             System.out.print(linha + " ");
@@ -41,33 +39,35 @@ public class PessoaService {
     }
 
     int i = 0;
+    ArrayList<String> perguntasExtras;
 
     private void gerandoArquivo(Pessoa pessoa) {
         i++;
+        perguntasExtras = cadastrarPergunta();
         try {
             File resposta = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\DB\\" + String.valueOf(i) + "-" + pessoa.getNome().toUpperCase() + ".txt");
             FileWriter fw = new FileWriter(resposta, true);
             BufferedWriter br = new BufferedWriter(fw);
-            br.write("Nome: " + pessoa.getNome() + " \n");
-            br.write("E-mail: " + pessoa.getEmail() + " \n");
-            br.write("Idade: " + String.valueOf(pessoa.getIdade()) + " \n");
-            br.write("Altura: " + String.valueOf(pessoa.getAltura()) + " \n");
+            br.write("1 - Nome: " + pessoa.getNome() + " \n");
+            br.write("2 - E-mail: " + pessoa.getEmail() + " \n");
+            br.write("3 - Idade: " + String.valueOf(pessoa.getIdade()) + " \n");
+            br.write("4 - Altura: " + String.valueOf(pessoa.getAltura()) + " \n");
+            br.write("Perguntas Extras \n");
 
-            System.out.println(cadastrarPergunta());
-
+            for (String perguntasExtra : perguntasExtras) {
+                br.write(perguntasExtra + "\n");
+            }
 
             br.flush();
             br.close();
             fw.close();
             resposta.createNewFile();
-
         } catch (IOException e) {
             e.getMessage();
         }
     }
 
     int j = 0;
-
     public void listAllPessoas() {
         j++;
         for (Pessoa Pessoa : listaPessoas) {
@@ -84,16 +84,13 @@ public class PessoaService {
         System.out.println("removerPergunta sem Implementação");
     }
 
-
     ArrayList<String> perguntaExtra;
     int k = 4;
-
     public ArrayList<String> cadastrarPergunta() {
-        perguntaExtra = new ArrayList();
-
+        perguntaExtra = new ArrayList<>();
+        System.out.print("Deseja Adicionar Perguntas Extras S/N ? ");
+        String inPerguntas = respostaIn.nextLine();
         while (true) {
-            System.out.print("Deseja Adicionar Perguntas Extras S/N ? ");
-            String inPerguntas = respostaIn.nextLine();
             if (inPerguntas.equalsIgnoreCase("n")) {
                 break;
             } else if (inPerguntas.equalsIgnoreCase("s")) {
@@ -104,13 +101,11 @@ public class PessoaService {
 
                 System.out.print("Deseja Adicionar Outra ? ");
                 inPerguntas = respostaIn.nextLine();
-                if (inPerguntas.equalsIgnoreCase("n")) {
-                    break;
-                }
+                    if (inPerguntas.equalsIgnoreCase("n")) {
+                        break;
+                    }
             }
         }
         return perguntaExtra;
     }
-
-
 }
