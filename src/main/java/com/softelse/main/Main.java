@@ -38,12 +38,9 @@ public class Main {
                 System.out.println("*** CADASTRAR PERGUNTAS ***");
                 leitor.cadastrarPergunta();
             } else if (opcaoEscolhida == 4) {
-                System.out.println("*** REMOVER PERGUNTAS ***");
-                leitor.removerPergunta();
-            } else if (opcaoEscolhida == 5) {
                 System.out.println("*** BUSCAR USUÁRIO ***");
                 leitor.buscarPessoaId();
-            } else if (opcaoEscolhida == 6) {
+            } else if (opcaoEscolhida == 5) {
                 System.out.println("*** SAIR DO SISTEMA ***");
                 break;
             } else {
