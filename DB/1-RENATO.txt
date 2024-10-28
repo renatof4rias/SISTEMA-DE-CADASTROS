@@ -1,0 +1,7 @@
+1 - Nome: Renato 
+2 - E-mail: renatof4rias@gmail.com 
+3 - Idade: 24 
+4 - Altura: 174.0 
+Perguntas Extras 
+5 - Qual sua Cor Favorita ?
+6 - Qual sua Comida Favorita ?
