@@ -10,6 +10,7 @@ public class PessoaService {
     File perguntas = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\src\\main\\java\\com\\softelse\\service\\perguntas.txt");
     Scanner respostaIn = new Scanner(System.in);
 
+
     Pessoa pessoa;
     ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 
