@@ -68,6 +68,7 @@ public class PessoaService {
     }
 
     int j = 0;
+
     public void listAllPessoas() {
         j++;
         for (Pessoa Pessoa : listaPessoas) {
@@ -101,10 +102,10 @@ public class PessoaService {
                 inPerguntas = respostaIn.nextLine();
                 if (inPerguntas.equalsIgnoreCase("n")) {
                     break;
-                }else {
+                } else {
                     System.out.println("*** ERROR AO ESCOLHER ***");
                 }
-            }else {
+            } else {
                 System.out.println("*** ERROR AO ESCOLHER ***");
             }
         }
@@ -130,9 +131,9 @@ public class PessoaService {
                 inPerguntas = respostaIn.nextLine();
                 if (inPerguntas.equalsIgnoreCase("n")) {
                     break;
-                } else if (inPerguntas.equalsIgnoreCase("s")){
+                } else if (inPerguntas.equalsIgnoreCase("s")) {
                     perguntaExtra.remove(perguntaExtraIn - 5);
-                }else {
+                } else {
                     System.out.println("*** ERROR AO ESCOLHER ***");
                 }
 
@@ -140,13 +141,13 @@ public class PessoaService {
                 for (String perguntaExtras : perguntaExtra) {
                     System.out.println(perguntaExtras);
                 }
-            }else {
+            } else {
                 System.out.println("*** ERROR AO ESCOLHER ***");
             }
 
             System.out.print("Deseja Remover Outra Pergunta S/N ? ");
             inPerguntas = respostaIn.nextLine();
         }
-            return perguntaExtra;
+        return perguntaExtra;
     }
 }
