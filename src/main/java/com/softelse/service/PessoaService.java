@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class PessoaService {
-    File perguntas = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\src\\main\\java\\com\\softelse\\service\\perguntas.txt");
+    File perguntas = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\src\\main\\java\\com\\softelse\\repository\\perguntas.txt");
     Scanner respostaIn = new Scanner(System.in);
 
     Pessoa pessoa;
@@ -80,15 +80,13 @@ public class PessoaService {
         //trocar nome do metodo
     }
 
-    public void removerPergunta() {
-        System.out.println("removerPergunta sem Implementação");
-    }
-
     ArrayList<String> perguntaExtra;
-    int k = 4;
+
+
     public ArrayList<String> cadastrarPergunta() {
         perguntaExtra = new ArrayList<>();
-        System.out.print("Deseja Adicionar Perguntas Extras S/N ? ");
+        int k = 4;
+        System.out.print("\nDeseja Adicionar Perguntas Extras S/N ? ");
         String inPerguntas = respostaIn.nextLine();
         while (true) {
             if (inPerguntas.equalsIgnoreCase("n")) {
@@ -101,11 +99,54 @@ public class PessoaService {
 
                 System.out.print("Deseja Adicionar Outra ? ");
                 inPerguntas = respostaIn.nextLine();
-                    if (inPerguntas.equalsIgnoreCase("n")) {
-                        break;
-                    }
+                if (inPerguntas.equalsIgnoreCase("n")) {
+                    break;
+                }else {
+                    System.out.println("*** ERROR AO ESCOLHER ***");
+                }
+            }else {
+                System.out.println("*** ERROR AO ESCOLHER ***");
             }
         }
-        return perguntaExtra;
+
+        System.out.println("\nLista de Perguntas Registradas");
+        for (String perguntaExtras : perguntaExtra) {
+            System.out.println(perguntaExtras);
+        }
+
+        System.out.print("Deseja Remover Alguma Pergunta S/N ? ");
+        inPerguntas = respostaIn.nextLine();
+        while (true) {
+            if (inPerguntas.equalsIgnoreCase("n")) {
+                break;
+            } else if (inPerguntas.equalsIgnoreCase("s")) {
+                System.out.print("Digite o Número da Perguta ?");
+                int perguntaExtraIn = respostaIn.nextInt();
+                respostaIn.nextLine();
+
+                System.out.println(perguntaExtra.get((perguntaExtraIn - 5)));
+
+                System.out.print("Deseja Remover Esta Pergunta S/N ?");
+                inPerguntas = respostaIn.nextLine();
+                if (inPerguntas.equalsIgnoreCase("n")) {
+                    break;
+                } else if (inPerguntas.equalsIgnoreCase("s")){
+                    perguntaExtra.remove(perguntaExtraIn - 5);
+                }else {
+                    System.out.println("*** ERROR AO ESCOLHER ***");
+                }
+
+                System.out.println("Lista Atualizada de Perguntas Registradas");
+                for (String perguntaExtras : perguntaExtra) {
+                    System.out.println(perguntaExtras);
+                }
+            }else {
+                System.out.println("*** ERROR AO ESCOLHER ***");
+            }
+
+            System.out.print("Deseja Remover Outra Pergunta S/N ? ");
+            inPerguntas = respostaIn.nextLine();
+        }
+            return perguntaExtra;
     }
 }
