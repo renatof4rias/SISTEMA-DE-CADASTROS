@@ -78,7 +78,7 @@ public class PessoaService {
         j= 0;
         System.out.print("Digite o Nome: ");
         String nomeUsuario = respostaIn.nextLine();
-        
+
             for (Pessoa usuario : listaPessoas) {
                 if (usuario.getNome().toLowerCase().contains(nomeUsuario.toLowerCase())) {
                     System.out.println(j + " - " +usuario.getNome());
@@ -194,10 +194,8 @@ public class PessoaService {
                     for (String perguntaExtras : perguntaExtra) {
                         System.out.println(perguntaExtras);
                     }
-
                     System.out.print("Deseja Remover Outra Pergunta S/N ? ");
                     inPerguntas = respostaIn.nextLine();
-
                 } else {
                     System.out.println("*** ERROR AO ESCOLHER ***");
                     System.out.print("Deseja Remover Alguma Pergunta S/N ? ");
