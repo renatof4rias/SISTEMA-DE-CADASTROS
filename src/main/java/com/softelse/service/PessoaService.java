@@ -72,7 +72,6 @@ public class PessoaService {
             j++;
             System.out.println(j + " - " + Pessoa.getNome().toUpperCase());
         }
-
     }
 
     public void buscarPessoa(){
