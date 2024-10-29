@@ -131,7 +131,6 @@ public class PessoaService {
             }
     }
 
-
     ArrayList<String> perguntaExtra;
     public ArrayList<String> cadastrarPergunta() {
         perguntaExtra = new ArrayList<>();
