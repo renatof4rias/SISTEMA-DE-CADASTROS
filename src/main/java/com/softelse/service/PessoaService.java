@@ -40,6 +40,7 @@ public class PessoaService {
 
     int i = 0;
     ArrayList<String> perguntasExtras;
+
     private void gerandoArquivo(Pessoa pessoa) {
         i++;
         perguntasExtras = cadastrarPergunta();
@@ -67,6 +68,7 @@ public class PessoaService {
     }
 
     int j = 0;
+
     public void listAllPessoas() {
         for (Pessoa Pessoa : listaPessoas) {
             j++;
@@ -74,64 +76,65 @@ public class PessoaService {
         }
     }
 
-    public void buscarPessoa(){
-        j= 0;
+    public void buscarPessoa() {
+        j = 0;
         System.out.print("Digite o Nome: ");
         String nomeUsuario = respostaIn.nextLine();
 
-            for (Pessoa usuario : listaPessoas) {
-                if (usuario.getNome().toLowerCase().contains(nomeUsuario.toLowerCase())) {
-                    System.out.println(j + " - " +usuario.getNome());
-                }
+        for (Pessoa usuario : listaPessoas) {
+            if (usuario.getNome().toLowerCase().contains(nomeUsuario.toLowerCase())) {
+                System.out.println(j + " - " + usuario.getNome());
             }
+        }
         System.out.println("Conseguio Encontrar o Usuário S/N ?");
         String inPerguntas = respostaIn.nextLine();
 
-            while(true){
-                if(inPerguntas.equalsIgnoreCase("n")){
-                    System.out.print("Digite o Nome: ");
-                    nomeUsuario = respostaIn.nextLine();
+        while (true) {
+            if (inPerguntas.equalsIgnoreCase("n")) {
+                System.out.print("Digite o Nome: ");
+                nomeUsuario = respostaIn.nextLine();
 
-                    for (Pessoa usuario : listaPessoas) {
-                        if (usuario.getNome().toLowerCase().contains(nomeUsuario.toLowerCase())) {
-                            System.out.println(usuario.getNome());
-                        }
+                for (Pessoa usuario : listaPessoas) {
+                    if (usuario.getNome().toLowerCase().contains(nomeUsuario.toLowerCase())) {
+                        System.out.println(usuario.getNome());
                     }
-                } else if (inPerguntas.equalsIgnoreCase("s")) {
-                    System.out.println("Qual o Número do Usuário?");
-                    int numeroUsuario = respostaIn.nextInt();
-
-                    try {
-                        File file = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\DB\\" + String.valueOf((numeroUsuario + 1)) + "-" + pessoa.getNome().toUpperCase() + ".txt");
-                        FileReader fr = new FileReader(file);
-                        BufferedReader br = new BufferedReader(fr);
-                        System.out.println("\n");
-                        System.out.println("1 - Nome - " +listaPessoas.get(numeroUsuario).getNome());
-                        System.out.println("2 - Email - " +listaPessoas.get(numeroUsuario).getEmail());
-                        System.out.println("3 - Idade - " +listaPessoas.get(numeroUsuario).getIdade());
-                        System.out.println("4 - Altura - " +listaPessoas.get(numeroUsuario).getAltura());
-
-                        int numeroDaLinha = 0;
-                        String linha;
-                        while ((linha = br.readLine()) != null) {
-                            numeroDaLinha++;
-                            if (numeroDaLinha > 4) {
-                                System.out.println(linha + " ");
-                            }
-                        }
-                        break;
-                    }catch (IOException e){
-                        e.getMessage();
-                    }
-                }else {
-                    System.out.println("*** ERROR AO ESCOLHER ***");
-                    System.out.println("Conseguio Encontrar o Usuário S/N ?");
-                    inPerguntas = respostaIn.nextLine();
                 }
+            } else if (inPerguntas.equalsIgnoreCase("s")) {
+                System.out.println("Qual o Número do Usuário?");
+                int numeroUsuario = respostaIn.nextInt();
+
+                try {
+                    File file = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\DB\\" + String.valueOf((numeroUsuario + 1)) + "-" + pessoa.getNome().toUpperCase() + ".txt");
+                    FileReader fr = new FileReader(file);
+                    BufferedReader br = new BufferedReader(fr);
+                    System.out.println("\n");
+                    System.out.println("1 - Nome - " + listaPessoas.get(numeroUsuario).getNome());
+                    System.out.println("2 - Email - " + listaPessoas.get(numeroUsuario).getEmail());
+                    System.out.println("3 - Idade - " + listaPessoas.get(numeroUsuario).getIdade());
+                    System.out.println("4 - Altura - " + listaPessoas.get(numeroUsuario).getAltura());
+
+                    int numeroDaLinha = 0;
+                    String linha;
+                    while ((linha = br.readLine()) != null) {
+                        numeroDaLinha++;
+                        if (numeroDaLinha > 4) {
+                            System.out.println(linha + " ");
+                        }
+                    }
+                    break;
+                } catch (IOException e) {
+                    e.getMessage();
+                }
+            } else {
+                System.out.println("*** ERROR AO ESCOLHER ***");
+                System.out.println("Conseguio Encontrar o Usuário S/N ?");
+                inPerguntas = respostaIn.nextLine();
             }
+        }
     }
 
     ArrayList<String> perguntaExtra;
+
     public ArrayList<String> cadastrarPergunta() {
         perguntaExtra = new ArrayList<>();
         int k = 4;
@@ -160,7 +163,7 @@ public class PessoaService {
             }
         }
         if (inPerguntas.equalsIgnoreCase("s")) {
-        System.out.println("\nLista de Perguntas Registradas");
+            System.out.println("\nLista de Perguntas Registradas");
             for (String perguntaExtras : perguntaExtra) {
                 System.out.println(perguntaExtras);
             }
