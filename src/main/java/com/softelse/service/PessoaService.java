@@ -75,14 +75,11 @@ public class PessoaService {
     }
 
     public void buscarPessoa(){
-
-
         j= 0;
         System.out.print("Digite o Nome: ");
         String nomeUsuario = respostaIn.nextLine();
-
+        
             for (Pessoa usuario : listaPessoas) {
-
                 if (usuario.getNome().toLowerCase().contains(nomeUsuario.toLowerCase())) {
                     System.out.println(j + " - " +usuario.getNome());
                 }
