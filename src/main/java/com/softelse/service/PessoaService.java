@@ -201,7 +201,6 @@ public class PessoaService {
                     System.out.print("Deseja Remover Alguma Pergunta S/N ? ");
                     inPerguntas = respostaIn.nextLine();
                 }
-
             }
         }
         return perguntaExtra;
