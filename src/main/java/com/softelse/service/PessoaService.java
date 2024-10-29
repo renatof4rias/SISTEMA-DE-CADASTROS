@@ -162,9 +162,9 @@ public class PessoaService {
         }
         if (inPerguntas.equalsIgnoreCase("s")) {
         System.out.println("\nLista de Perguntas Registradas");
-        for (String perguntaExtras : perguntaExtra) {
-            System.out.println(perguntaExtras);
-        }
+            for (String perguntaExtras : perguntaExtra) {
+                System.out.println(perguntaExtras);
+            }
         }
         if (inPerguntasN) {
             System.out.print("Deseja Remover Alguma Pergunta S/N ? ");
