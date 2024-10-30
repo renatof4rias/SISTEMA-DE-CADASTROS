@@ -90,6 +90,7 @@ public class PessoaService {
         if(!email.contains("@")){
             throw new EmailException("O Email Invalido! Espera-se @. ");
         }
+
     }
 
     private void validarIdade(int idade){
