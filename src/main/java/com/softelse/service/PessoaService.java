@@ -84,7 +84,6 @@ public class PessoaService {
         if (nome.length() < 10) {
             throw new NomeException("O nome deve ter no mínimo 10 caracteres.");
         }
-
     }
 
     private void validarEmail(String email){
