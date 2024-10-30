@@ -1,9 +1,13 @@
 package com.softelse.service;
 
+import com.softelse.exeption.EmailException;
+import com.softelse.exeption.IdadeException;
+import com.softelse.exeption.NomeException;
 import com.softelse.model.Pessoa;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class PessoaService {
@@ -24,20 +28,79 @@ public class PessoaService {
             numeroDaLinha++;
             System.out.print(linha + " ");
             if (numeroDaLinha == 1) {
-                pessoa.setNome(respostaIn.nextLine());
+                    String nome = respostaIn.nextLine();
+                while (true) {
+                    try {
+                            validarNome(nome);
+                            pessoa.setNome(nome);
+                            break;
+                    } catch (NomeException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    System.out.print(linha + " ");
+                    nome = respostaIn.nextLine();
+                }
             } else if (numeroDaLinha == 2) {
-                pessoa.setEmail(respostaIn.nextLine());
+                String email = respostaIn.nextLine();
+                while (true) {
+                    try {
+                        validarEmail(email);
+                        pessoa.setEmail(email);
+                        break;
+                    } catch (EmailException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    System.out.print(linha + " ");
+                    email = respostaIn.nextLine();
+                }
+
             } else if (numeroDaLinha == 3) {
-                pessoa.setIdade(respostaIn.nextInt());
+                int idade = respostaIn.nextInt();
+                while (true) {
+                    try {
+                        validarIdade(idade);
+                        pessoa.setIdade(idade);
+                        break;
+                    } catch (IdadeException e) {
+                        System.out.println(e.getMessage());
+                    }
+                    System.out.print(linha + " ");
+                    idade = respostaIn.nextInt();
+                }
             } else if (numeroDaLinha == 4) {
-                pessoa.setAltura(respostaIn.nextDouble());
-                respostaIn.nextLine();
+
+                String alturaString = respostaIn.next();
+                alturaString = alturaString.replace(".", ",");
+                double altura = Double.parseDouble(alturaString);
+                pessoa.setAltura(altura);
+//                respostaIn.nextLine();
             }
         }
         listaPessoas.add(pessoa);
         gerandoArquivo(pessoa);
     }
 
+    private void validarNome(String nome){
+        if (nome.length() < 10) {
+            throw new NomeException("O nome deve ter no mínimo 10 caracteres.");
+        }
+
+    }
+
+    private void validarEmail(String email){
+        if(!email.contains("@")){
+            throw new EmailException("O Email Invalido! Espera-se @. ");
+        }
+    }
+
+    private void validarIdade(int idade){
+        if(idade < 18){
+            throw new IdadeException("O Usuário deve ser Maior de 18 anos!");
+        }
+    }
+//    private void validarAltura(String altura){
+//
+//    }
     int i = 0;
     ArrayList<String> perguntasExtras;
 
