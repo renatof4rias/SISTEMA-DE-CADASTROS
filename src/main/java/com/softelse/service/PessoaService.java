@@ -28,12 +28,12 @@ public class PessoaService {
             numeroDaLinha++;
             System.out.print(linha + " ");
             if (numeroDaLinha == 1) {
-                    String nome = respostaIn.nextLine();
+                String nome = respostaIn.nextLine();
                 while (true) {
                     try {
-                            validarNome(nome);
-                            pessoa.setNome(nome);
-                            break;
+                        validarNome(nome);
+                        pessoa.setNome(nome);
+                        break;
                     } catch (NomeException e) {
                         System.out.println(e.getMessage());
                     }
@@ -80,24 +80,25 @@ public class PessoaService {
         gerandoArquivo(pessoa);
     }
 
-    private void validarNome(String nome){
+    private void validarNome(String nome) {
         if (nome.length() < 10) {
             throw new NomeException("O nome deve ter no mínimo 10 caracteres.");
         }
     }
 
-    private void validarEmail(String email){
-        if(!email.contains("@")){
+    private void validarEmail(String email) {
+        if (!email.contains("@")) {
             throw new EmailException("O Email Invalido! Espera-se @. ");
         }
     }
 
-    private void validarIdade(int idade){
-        if(idade < 18){
+    private void validarIdade(int idade) {
+        if (idade < 18) {
             throw new IdadeException("O Usuário deve ser Maior de 18 anos!");
         }
     }
-//    private void validarAltura(String altura){
+
+    //    private void validarAltura(String altura){
 //
 //    }
     int i = 0;
