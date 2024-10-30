@@ -96,6 +96,7 @@ public class PessoaService {
         if(idade < 18){
             throw new IdadeException("O Usuário deve ser Maior de 18 anos!");
         }
+
     }
 //    private void validarAltura(String altura){
 //
