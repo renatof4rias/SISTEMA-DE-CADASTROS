@@ -8,11 +8,13 @@ import com.softelse.model.Pessoa;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class PessoaService {
     File perguntas = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\src\\main\\java\\com\\softelse\\repository\\perguntas.txt");
-    Scanner respostaIn = new Scanner(System.in);
+
+    Scanner respostaIn = new Scanner(System.in).useLocale(Locale.of("pt", "BR"));
 
     Pessoa pessoa;
     ArrayList<Pessoa> listaPessoas = new ArrayList<>();
@@ -68,12 +70,8 @@ public class PessoaService {
                     idade = respostaIn.nextInt();
                 }
             } else if (numeroDaLinha == 4) {
-
-                String alturaString = respostaIn.next();
-                alturaString = alturaString.replace(".", ",");
-                double altura = Double.parseDouble(alturaString);
-                pessoa.setAltura(altura);
-//                respostaIn.nextLine();
+                pessoa.setAltura(respostaIn.nextDouble());
+                respostaIn.nextLine();
             }
         }
         listaPessoas.add(pessoa);
@@ -98,9 +96,6 @@ public class PessoaService {
         }
     }
 
-    //    private void validarAltura(String altura){
-//
-//    }
     int i = 0;
     ArrayList<String> perguntasExtras;
 
