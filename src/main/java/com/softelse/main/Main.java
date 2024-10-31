@@ -39,6 +39,7 @@ public class Main {
             } else if (opcaoEscolhida == 4) {
                 System.out.println("*** BUSCAR USUÁRIO ***");
                 leitor.buscarPessoa();
+                sc.nextLine();
             } else if (opcaoEscolhida == 5) {
                 System.out.println("*** SAIR DO SISTEMA ***");
                 break;
@@ -47,6 +48,7 @@ public class Main {
             }
 
             opcaoMenu = """
+                    
                     🚨🚨🚨🚨🚨Escolha uma Opção do Menu🚨🚨🚨🚨🚨
                     1 - Cadastrar o usuário ➕
                     2 - Listar todos usuários cadastrados 📋
@@ -57,7 +59,7 @@ public class Main {
 
             System.out.print(opcaoMenu);
             opcaoEscolhida = sc.nextInt();
-
+            sc.nextLine();
         }
         sc.close();
     }

@@ -7,7 +7,6 @@ import com.softelse.model.Pessoa;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -55,7 +54,6 @@ public class PessoaService {
                     System.out.print(linha + " ");
                     email = respostaIn.nextLine();
                 }
-
             } else if (numeroDaLinha == 3) {
                 int idade = respostaIn.nextInt();
                 while (true) {
@@ -87,6 +85,12 @@ public class PessoaService {
     private void validarEmail(String email) {
         if (!email.contains("@")) {
             throw new EmailException("O Email Invalido! Espera-se @. ");
+        }
+
+        for (Pessoa pessoa : listaPessoas) {
+            if (email.equalsIgnoreCase(pessoa.getEmail())){
+                throw new EmailException("O Email Já foi Registrado, Cadastre-se Utilizando um Novo. ");
+            }
         }
     }
 
@@ -125,26 +129,22 @@ public class PessoaService {
         }
     }
 
-    int j = 0;
-
     public void listAllPessoas() {
         for (Pessoa Pessoa : listaPessoas) {
-            j++;
-            System.out.println(j + " - " + Pessoa.getNome().toUpperCase());
+            System.out.println(listaPessoas.indexOf(Pessoa) + " - " + Pessoa.getNome().toUpperCase());
         }
     }
 
     public void buscarPessoa() {
-        j = 0;
         System.out.print("Digite o Nome: ");
         String nomeUsuario = respostaIn.nextLine();
 
         for (Pessoa usuario : listaPessoas) {
             if (usuario.getNome().toLowerCase().contains(nomeUsuario.toLowerCase())) {
-                System.out.println(j + " - " + usuario.getNome());
+                System.out.println(listaPessoas.indexOf(usuario) + " - " + usuario.getNome());
             }
         }
-        System.out.println("Conseguio Encontrar o Usuário S/N ?");
+        System.out.print("Conseguio Encontrar o Usuário S/N ?");
         String inPerguntas = respostaIn.nextLine();
 
         while (true) {
@@ -154,18 +154,22 @@ public class PessoaService {
 
                 for (Pessoa usuario : listaPessoas) {
                     if (usuario.getNome().toLowerCase().contains(nomeUsuario.toLowerCase())) {
-                        System.out.println(usuario.getNome());
+                        System.out.println(listaPessoas.indexOf(usuario) + " - " + usuario.getNome());
                     }
                 }
+                System.out.println("Conseguio Encontrar o Usuário S/N ?");
+                inPerguntas = respostaIn.nextLine();
+
             } else if (inPerguntas.equalsIgnoreCase("s")) {
                 System.out.println("Qual o Número do Usuário?");
                 int numeroUsuario = respostaIn.nextInt();
+//                respostaIn.nextLine();
 
                 try {
                     File file = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\DB\\" + String.valueOf((numeroUsuario + 1)) + "-" + pessoa.getNome().toUpperCase() + ".txt");
                     FileReader fr = new FileReader(file);
                     BufferedReader br = new BufferedReader(fr);
-                    System.out.println("\n");
+
                     System.out.println("1 - Nome - " + listaPessoas.get(numeroUsuario).getNome());
                     System.out.println("2 - Email - " + listaPessoas.get(numeroUsuario).getEmail());
                     System.out.println("3 - Idade - " + listaPessoas.get(numeroUsuario).getIdade());
@@ -179,6 +183,8 @@ public class PessoaService {
                             System.out.println(linha + " ");
                         }
                     }
+                    fr.close();
+                    br.close();
                     break;
                 } catch (IOException e) {
                     e.getMessage();
