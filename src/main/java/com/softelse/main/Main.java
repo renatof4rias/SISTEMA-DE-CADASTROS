@@ -15,7 +15,7 @@ public class Main {
                 1 - Cadastrar o usuário ➕
                 2 - Listar todos usuários cadastrados 📋
                 3 - Cadastrar nova pergunta no formulário ➕
-                4 - Pesquisar usuário por nome ou idade ou email 🔍
+                4 - Pesquisar usuário por nome 🔍
                 5 - Sair do Sistema 🚪            
                 """;
 
