@@ -148,6 +148,7 @@ public class PessoaService {
 
         while (true) {
             if (inPerguntas.equalsIgnoreCase("n")) {
+
                 System.out.print("Digite o Nome: ");
                 nomeUsuario = respostaIn.nextLine();
 
@@ -156,6 +157,7 @@ public class PessoaService {
                         System.out.println(listaPessoas.indexOf(usuario) + " - " + usuario.getNome());
                     }
                 }
+
                 System.out.println("Conseguio Encontrar o Usuário S/N ?");
                 inPerguntas = respostaIn.nextLine();
 
