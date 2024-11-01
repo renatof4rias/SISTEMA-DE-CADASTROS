@@ -48,7 +48,7 @@ public class Main {
             }
 
             opcaoMenu = """
-                    
+                                        
                     🚨🚨🚨🚨🚨Escolha uma Opção do Menu🚨🚨🚨🚨🚨
                     1 - Cadastrar o usuário ➕
                     2 - Listar todos usuários cadastrados 📋
