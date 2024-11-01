@@ -88,7 +88,7 @@ public class PessoaService {
         }
 
         for (Pessoa pessoa : listaPessoas) {
-            if (email.equalsIgnoreCase(pessoa.getEmail())){
+            if (email.equalsIgnoreCase(pessoa.getEmail())) {
                 throw new EmailException("O Email Já foi Registrado, Cadastre-se Utilizando um Novo. ");
             }
         }
@@ -119,7 +119,6 @@ public class PessoaService {
             for (String perguntasExtra : perguntasExtras) {
                 br.write(perguntasExtra + "\n");
             }
-
             br.flush();
             br.close();
             fw.close();
@@ -163,36 +162,41 @@ public class PessoaService {
             } else if (inPerguntas.equalsIgnoreCase("s")) {
                 System.out.println("Qual o Número do Usuário?");
                 int numeroUsuario = respostaIn.nextInt();
-//                respostaIn.nextLine();
 
+                var usuarioEscolhido = listaPessoas.get(numeroUsuario);
                 try {
-                    File file = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\DB\\" + String.valueOf((numeroUsuario + 1)) + "-" + pessoa.getNome().toUpperCase() + ".txt");
-                    FileReader fr = new FileReader(file);
-                    BufferedReader br = new BufferedReader(fr);
+                    File file = new File("C:\\Users\\Renato\\Desktop\\SISTEMA-DE-CADASTROS\\DB\\"
+                            + (numeroUsuario + 1) + "-"
+                            + usuarioEscolhido.getNome().toUpperCase()
+                            + ".txt");
 
-                    System.out.println("1 - Nome - " + listaPessoas.get(numeroUsuario).getNome());
-                    System.out.println("2 - Email - " + listaPessoas.get(numeroUsuario).getEmail());
-                    System.out.println("3 - Idade - " + listaPessoas.get(numeroUsuario).getIdade());
-                    System.out.println("4 - Altura - " + listaPessoas.get(numeroUsuario).getAltura());
+                    if (file.exists()) {
+                        try (FileReader fr = new FileReader(file);
+                             BufferedReader br = new BufferedReader(fr)) {
 
-                    int numeroDaLinha = 0;
-                    String linha;
-                    while ((linha = br.readLine()) != null) {
-                        numeroDaLinha++;
-                        if (numeroDaLinha > 4) {
-                            System.out.println(linha + " ");
+                            System.out.println("1 - Nome - " + usuarioEscolhido.getNome());
+                            System.out.println("2 - Email - " + usuarioEscolhido.getEmail());
+                            System.out.println("3 - Idade - " + usuarioEscolhido.getIdade());
+                            System.out.println("4 - Altura - " + usuarioEscolhido.getAltura());
+
+                            int numeroDaLinha = 0;
+                            String linha;
+                            while ((linha = br.readLine()) != null) {
+                                numeroDaLinha++;
+                                if (numeroDaLinha > 4) {
+                                    System.out.println(linha + " ");
+                                }
+                            }
                         }
+                    } else {
+                        System.out.println("Arquivo do usuário não encontrado.");
                     }
-                    fr.close();
-                    br.close();
                     break;
                 } catch (IOException e) {
-                    e.getMessage();
+                    System.out.println("Erro ao ler o arquivo: " + e.getMessage());
                 }
             } else {
-                System.out.println("*** ERROR AO ESCOLHER ***");
-                System.out.println("Conseguio Encontrar o Usuário S/N ?");
-                inPerguntas = respostaIn.nextLine();
+                System.out.println("Número de usuário inválido. Tente novamente.");
             }
         }
     }
